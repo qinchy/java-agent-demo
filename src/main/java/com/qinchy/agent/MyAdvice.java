@@ -9,14 +9,19 @@ public class MyAdvice {
 
     // 方法执行前
     @Advice.OnMethodEnter
-    public static void enter(@Advice.This Object obj, @Advice.AllArguments Object[] allArguments, @Advice.Origin("#t") String className, @Advice.Origin("#m") String methodName) {
+    public static void enter(@Advice.This Object obj,
+                             @Advice.AllArguments Object[] allArguments,
+                             @Advice.Origin("#t") String className,
+                             @Advice.Origin("#m") String methodName) {
         System.out.println("OnMethodEnter -> " + className + "." + methodName);
     }
 
     // 方法执行后, inline = true 必须使用默认, 否则会出错
     @Advice.OnMethodExit
-    public static void exit(@Advice.This Object obj, @Advice.AllArguments Object[] allArguments,
-                            @Advice.Origin("#t") String className, @Advice.Origin("#m") String methodName) {
+    public static void exit(@Advice.This Object obj,
+                            @Advice.AllArguments Object[] allArguments,
+                            @Advice.Origin("#t") String className,
+                            @Advice.Origin("#m") String methodName) {
         System.out.println("OnMethodExit -> " + className + "." + methodName);
         System.out.println("OnMethodExit -> " + obj + "." + allArguments);
         for (Object argument : allArguments) {
